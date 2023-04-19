@@ -1,4 +1,4 @@
-package com.example.demoxml.model;
+package com.example.demoxml.model.xml;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
-//@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "group")
 @Getter
 @Setter
