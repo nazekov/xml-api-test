@@ -1,9 +1,7 @@
 package com.example.demoxml.controller;
 
-import com.example.demoxml.model.xml.CheckPaymentRequisites;
-import com.example.demoxml.model.xml.Payment;
-import com.example.demoxml.model.xml.Providers;
-import com.example.demoxml.model.xml.Request;
+import com.example.demoxml.model.xml.*;
+import com.example.demoxml.service.RequisiteService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class XmlController {
+public class RequisiteController {
+
+    private final RequisiteService requisiteService;
+
+    public RequisiteController(RequisiteService requisiteService) {
+        this.requisiteService = requisiteService;
+    }
 
 //    @PostMapping(value = "/getUIGroups", produces = {"application/xml"})
 //    public Response getUIGroups() {
@@ -54,13 +58,7 @@ public class XmlController {
 //    }
 
     @PostMapping(value = "/checkPaymentRequisites", produces = {"application/xml"})
-    public Request checkPaymentRequisites(@RequestBody Request request) {
-        Providers providers = request.getProviders();
-        CheckPaymentRequisites checkPaymentRequisites = providers.getCheckPaymentRequisites();
-        Payment payment = checkPaymentRequisites.getPayment();
-        payment.setResult(0);
-        payment.setStatus(3);
-        payment.setSubscriber("Hello Hello");
-        return request;
+    public Response checkPaymentRequisites(@RequestBody Request request) {
+        return requisiteService.findPersonByAccountRequest(request);
     }
 }

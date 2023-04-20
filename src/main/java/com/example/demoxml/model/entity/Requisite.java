@@ -5,13 +5,13 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tb_persons")
+@Table(name = "tb_requisites")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Person {
+public class Requisite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
