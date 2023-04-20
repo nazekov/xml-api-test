@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class CheckPaymentRequisites {
 
     @XmlElement
-    Payment payment;
+    PaymentXml paymentXml;
 
     @XmlElement
     Extras extras;

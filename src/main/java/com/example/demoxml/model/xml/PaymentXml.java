@@ -4,14 +4,14 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "payment")
+@XmlRootElement(name = "paymentXml")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Payment {
+public class PaymentXml {
 
     @XmlAttribute
     Long id;

@@ -7,24 +7,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "providers")
+@XmlRootElement(name = "getPaymentStatus")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Providers {
+public class GetPaymentStatus {
 
-//    @XmlElement(name = "getUIGroups")
-//    private UIGroups uiGroups;
-
-    @XmlElement(name = "checkPaymentRequisites")
-    CheckPaymentRequisites checkPaymentRequisites;
-
-    @XmlElement(name = "addOfflinePayment")
-    AddOfflinePayment addOfflinePayment;
-
-    @XmlElement(name = "getPaymentStatus")
-    GetPaymentStatus getPaymentStatus;
+    @XmlElement
+    PaymentXml paymentXml;
 }

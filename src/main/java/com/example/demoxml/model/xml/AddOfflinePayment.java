@@ -1,5 +1,6 @@
 package com.example.demoxml.model.xml;
 
+import com.example.demoxml.model.entity.Payment;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.xml.bind.annotation.*;
@@ -17,5 +18,5 @@ public class AddOfflinePayment {
     Integer result;
 
     @XmlElement
-    Payment payment;
+    PaymentXml paymentXml;
 }

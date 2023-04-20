@@ -21,7 +21,7 @@ public class RequisiteServiceImpl implements RequisiteService {
         Optional<Requisite> optionalPerson = requisiteRepository.findByAccount(request
                 .getProviders()
                 .getCheckPaymentRequisites()
-                .getPayment()
+                .getPaymentXml()
                 .getTo()
                 .getAccount()
         );
@@ -31,8 +31,8 @@ public class RequisiteServiceImpl implements RequisiteService {
 
         CheckPaymentRequisites checkPaymentRequisites
                 = response.getProviders().getCheckPaymentRequisites();
-        Payment payment = checkPaymentRequisites.getPayment();
-        payment.setResult(0);
+        PaymentXml paymentXml = checkPaymentRequisites.getPaymentXml();
+        paymentXml.setResult(0);
 
         int status = 0;
         String subscriber = "Абонент не найден";
@@ -44,9 +44,9 @@ public class RequisiteServiceImpl implements RequisiteService {
                             " " + requisite.getLastName() +
                             " " + requisite.getPatronymic();
         }
-        payment.setStatus(status);
-        payment.setSubscriber(subscriber);
-        payment.setTo(null);
+        paymentXml.setStatus(status);
+        paymentXml.setSubscriber(subscriber);
+        paymentXml.setTo(null);
         checkPaymentRequisites.setExtras(new Extras(subscriber));
         return response;
     }

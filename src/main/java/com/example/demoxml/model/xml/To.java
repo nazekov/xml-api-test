@@ -24,10 +24,10 @@ public class To {
     Long account;
 
     @XmlAttribute
-    Long amount;
+    BigDecimal amount;
 
     @XmlAttribute
-    Long currency;
+    Integer currency;
 
     @XmlAttribute
     BigDecimal commission;
