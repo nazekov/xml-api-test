@@ -1,10 +1,7 @@
 package com.example.demoxml.model.xml;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
@@ -12,22 +9,23 @@ import java.util.List;
 @XmlRootElement(name = "group")
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Group {
 
     @XmlAttribute(name = "id")
-    private Integer id;
+    Integer id;
 
     @XmlAttribute(name = "name")
-    private String name;
+    String name;
 
     @XmlAttribute(name = "orderId")
-    private Integer orderId;
+    Integer orderId;
 
     @XmlAttribute(name = "logo")
-    private String logo;
+    String logo;
 
 //    @XmlElement(name = "provider")
-    private List<Provider> providers;
+    List<Provider> providers;
 }

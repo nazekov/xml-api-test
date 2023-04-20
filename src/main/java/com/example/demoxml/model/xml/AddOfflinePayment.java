@@ -4,18 +4,18 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "response")
+@XmlRootElement(name = "addOfflinePayment")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Response {
+public class AddOfflinePayment {
 
     @XmlAttribute
     Integer result;
 
     @XmlElement
-    Providers providers;
+    Payment payment;
 }

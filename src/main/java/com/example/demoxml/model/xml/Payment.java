@@ -1,31 +1,33 @@
 package com.example.demoxml.model.xml;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "payment")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Payment {
 
     @XmlAttribute
-    private Long id;
+    Long id;
 
     @XmlAttribute
-    private Integer result;
+    Integer result;
 
     @XmlAttribute
-    private Integer status;
+    Integer status;
 
     @XmlAttribute
-    private String subscriber;
+    Integer uid;
+
+    @XmlAttribute
+    String subscriber;
 
     @XmlElement
-    private To to;
+    To to;
 }
