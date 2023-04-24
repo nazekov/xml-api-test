@@ -6,7 +6,6 @@ import com.example.demoxml.repository.PaymentRepository;
 import com.example.demoxml.service.PaymentService;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -26,7 +25,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         Optional<Payment> optionalPayment = paymentRepository.findById(paymentXml.getId());
         if (optionalPayment.isPresent()) {
-            return getPaymentStatus(paymentXml);
+            return getExistPaymentStatus(paymentXml);
         }
 
         To to = paymentXml.getTo();
@@ -53,7 +52,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public Response getPaymentStatus(PaymentXml paymentXml) {
+    public Response getExistPaymentStatus(PaymentXml paymentXml) {
         Response response = new Response();
         Providers providers = new Providers();
 
@@ -66,6 +65,31 @@ public class PaymentServiceImpl implements PaymentService {
 
         getPaymentStatus.setPaymentXml(paymentXml);
         providers.setGetPaymentStatus(getPaymentStatus);
+        response.setProviders(providers);
+        response.setResult(0);
+
+        return response;
+    }
+
+    @Override
+    public Response getPaymentStatus(Request request) {
+        PaymentXml paymentXml = request.getProviders().getGetPaymentStatus().getPaymentXml();
+        Optional<Payment> optionalPayment = paymentRepository.findById(paymentXml.getId());
+
+        int status = optionalPayment.isPresent() ? 3 : 0;
+
+        Response response = new Response();
+        Providers providers = new Providers();
+        GetPaymentStatus getPaymentStatus = new GetPaymentStatus();
+
+        paymentXml.setResult(0);
+        paymentXml.setUid(123);
+        paymentXml.setStatus(status);
+        paymentXml.setTo(null);
+
+        getPaymentStatus.setPaymentXml(paymentXml);
+        providers.setGetPaymentStatus(getPaymentStatus);
+
         response.setProviders(providers);
         response.setResult(0);
 

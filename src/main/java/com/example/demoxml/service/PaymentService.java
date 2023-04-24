@@ -8,5 +8,7 @@ public interface PaymentService {
 
     Response addOfflinePayment(Request request);
 
-    Response getPaymentStatus(PaymentXml paymentXml);
+    Response getExistPaymentStatus(PaymentXml paymentXml);
+
+    Response getPaymentStatus(Request request);
 }
