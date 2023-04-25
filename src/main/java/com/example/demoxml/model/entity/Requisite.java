@@ -1,5 +1,6 @@
 package com.example.demoxml.model.entity;
 
+import com.example.demoxml.enums.StatusAccount;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
@@ -28,4 +29,7 @@ public class Requisite {
 
     @Column(unique = true)
     Long account;
+
+    @Enumerated(EnumType.STRING)
+    StatusAccount statusAccount;
 }

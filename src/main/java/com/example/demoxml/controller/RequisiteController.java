@@ -2,19 +2,21 @@ package com.example.demoxml.controller;
 
 import com.example.demoxml.model.xml.*;
 import com.example.demoxml.service.RequisiteService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demoxml.service.ValidateService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api1")
+@RequestMapping(value = "/api1")
 public class RequisiteController {
 
     private final RequisiteService requisiteService;
 
-    public RequisiteController(RequisiteService requisiteService) {
+    private final ValidateService validateService;
+
+    public RequisiteController(RequisiteService requisiteService,
+                               ValidateService validateService) {
         this.requisiteService = requisiteService;
+        this.validateService = validateService;
     }
 
 //    @PostMapping(value = "/getUIGroups", produces = {"application/xml"})
@@ -59,6 +61,10 @@ public class RequisiteController {
 
     @PostMapping(value = "/checkPaymentRequisites", produces = {"application/xml"})
     public Response checkPaymentRequisites(@RequestBody Request request) {
+        Response response = validateService.checkInputData(request);
+        if (response != null) {
+            return response;
+        }
         return requisiteService.findPersonByAccountRequest(request);
     }
 }

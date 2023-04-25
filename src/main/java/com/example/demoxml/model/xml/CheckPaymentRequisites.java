@@ -21,4 +21,7 @@ public class CheckPaymentRequisites {
 
     @XmlElement
     Extras extras;
+
+    @XmlElement
+    ErrorProblem errorProblem;
 }

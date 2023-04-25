@@ -50,4 +50,9 @@ public class RequisiteServiceImpl implements RequisiteService {
         checkPaymentRequisites.setExtras(new Extras(subscriber));
         return response;
     }
+
+    @Override
+    public Requisite findByAccount(Long account) {
+        return requisiteRepository.findByAccount(account).orElse(null);
+    }
 }
