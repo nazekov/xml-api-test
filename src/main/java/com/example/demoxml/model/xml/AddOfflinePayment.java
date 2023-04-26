@@ -19,4 +19,7 @@ public class AddOfflinePayment {
 
     @XmlElement
     PaymentXml paymentXml;
+
+    @XmlElement
+    ErrorProblem errorProblem;
 }
